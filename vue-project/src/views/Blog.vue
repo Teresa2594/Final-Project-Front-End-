@@ -4,7 +4,9 @@
     </header>
     <body class="body">  
         
-        <button @click="trigger()">Open Popup</button>
+        <div class="iconplus">
+        <i @click="trigger()" class="fa-solid fa-square-plus fa-2x" name="icon-plus"></i>
+    </div>
 
         <Popup v-if="buttonTrigger" :trigger="()=>this.buttonTrigger=false" >
             <SavePost></SavePost>
@@ -57,7 +59,7 @@ export default{
     },
 
     async created(){    
-        for (let i = 4; i <8; i++) {  
+        for (let i = 1; i <6; i++) {  
         const response = await fetch(`http://localhost:8083/api/posts/${i}`)
         const data = await response.json();
         const post ={
@@ -85,6 +87,16 @@ this.posts.push(post);
     list-style-type: none;
     gap: none;
 }
+
+.iconplus{
+    display: flex;
+    justify-content: right;
+    padding-right: 30px;
+    
+}
+
+
+
 
 
 

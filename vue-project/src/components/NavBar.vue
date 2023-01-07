@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav class="navbar">
       <div class="img">
       <img src="../assets/Captura de pantalla 2023-01-03 a las 10.15.55.png" alt="logo de inicio">
       </div> 
@@ -14,6 +14,7 @@
       <div class="menu-item"><router-link to="/Blog">Blog</router-link></div>
    
     </nav>
+
   </template>
   
   <script>
@@ -91,6 +92,8 @@ import Dropdown from './Dropdown.vue';
   padding: 0;
   box-sizing: border-box;
 }
+
+
 
 
   </style>
