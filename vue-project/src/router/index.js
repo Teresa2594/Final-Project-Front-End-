@@ -6,6 +6,7 @@ import ComerYBeber from '../views/ComerYBeber.vue'
 import Situacion from '../views/Situacion.vue'
 import DondeDormir from '../views/DondeDormir.vue'
 import Blog from '../views/Blog.vue'
+import Users from '../views/users.vue'
 
 const routes = [
   {
@@ -37,6 +38,12 @@ const routes = [
     path: '/Blog',
     name: 'Blog',
     component: Blog
+  },
+
+  {
+    path: '/Users',
+    name: 'Users',
+    component: Users
   },
 ]
 

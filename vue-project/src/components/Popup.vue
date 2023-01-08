@@ -1,8 +1,11 @@
 <template>
     <div class="popup">
         <div class="popup-inner">
-            <slot />
-                <button class="popup-close" @click="trigger()">Close Popup</button> 
+            <div class="butClose">
+                <i class="fa-sharp fa-solid fa-circle-xmark fa-2x"  @click="trigger()"></i>
+        
+        </div>
+            <slot />   
         </div>
     </div>
 
@@ -36,8 +39,26 @@ props:['trigger']
 
 .popup .popup-inner{
     background-color: aliceblue;
-    padding:32px;
+  width: 800px;
+  height: 800px;
+  padding:30px;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url("../assets/fondoForm.jpeg");
+
 
 }
+
+.butClose{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fa-sharp{
+    padding-top: 10px;
+    color: rgba(219, 88, 88, 0.845);
+ 
+}
+
+
 
 </style>
