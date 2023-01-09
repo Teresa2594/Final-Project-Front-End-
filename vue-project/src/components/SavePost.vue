@@ -4,25 +4,25 @@
 
 <form @submit="sendForm" class="formulario">
     <label class="labels">Id del post</label>
-    <input class="inputs" id="post" type="text" v-model="post.id">
+    <input class="inputs" id="post" type="number" v-model="post.id">
 
     <label class="labels">Título</label>
-    <input class="inputs" id="title" type="text" v-model="post.title">
+    <input class="inputs" id="title" type="text" v-model="post.title" required>
     
     <label class="labels">Fecha de publicación</label>
-    <input class="inputs" type="date" v-model="post.date">
+    <input class="inputs" type="date" v-model="post.date" required>
 
     <label class="labels">Sección</label>
-    <input class="inputs" type="text" v-model="post.section">
+    <input class="inputs" type="text" v-model="post.section" required>
 
     <label class="labels">ID del usuario</label>
-    <input class="inputs" type="text" v-model="post.userId">
+    <input class="inputs" type="text" v-model="post.userId" required>
 
     <label class="labels">Descripción</label>
     <textarea class="inputs" type="text" v-model="post.description" rows="10" cols="5" ></textarea>
 
     <label class="labels">Url de la imágen</label>
-    <input class="inputs" type="text" v-model="post.urlImagen">
+    <input class="inputs" type="text" v-model="post.urlImagen" >
     
     <input type="submit" value="Enviar" class="enviar" >
 
@@ -76,6 +76,7 @@ export default{
 .formulario{
     display:flex;
     flex-direction: column;
+    justify-content: left;
    
 }
 

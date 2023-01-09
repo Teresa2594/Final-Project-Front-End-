@@ -10,7 +10,7 @@
 
             <router-link class="users" to="/Users">
                 <i class="fa-solid fa-users fa-2x"></i></router-link>
-        </div>
+            </div>
 
         <Popup v-if="buttonTrigger" :trigger="() => (this.buttonTrigger = false)">
             <SavePost></SavePost>
@@ -21,7 +21,6 @@
                 <BlogCard :post="post"></BlogCard>
             </li>
         </ul>
-
     </body>
 
     <footer>
@@ -35,6 +34,8 @@ import Footer from "../components/Footer.vue";
 import BlogCard from "../components/BlogCard.vue";
 import Popup from "../components/Popup.vue";
 import SavePost from "../components/SavePost.vue";
+
+
 
 export default {
     components: {
@@ -56,22 +57,13 @@ export default {
             this.buttonTrigger = true;
         },
     },
-
+    
     async created() {
-        for (let i = 1;i<6; i++) {
-            const response = await fetch(`http://localhost:8083/api/posts/${i}`);
-            const data = await response.json();
-            const post = {
-                title: data.title,
-                date: data.date,
-                section: data.section,
-                description: data.description,
-                imagen: data.urlImagen,
-            };
-            this.posts.push(post);
-        }
+            const response = await fetch(`http://localhost:8083/api/posts`);
+            this.posts = await response.json();        
     },
 };
+
 </script>
 
 <style>

@@ -11,7 +11,10 @@
         <p>{{user.username}}</p>
         <p>{{user.email}}</p>
         <p>{{user.age}}</p>
-        <p>{{user.posts}}</p>
+        <div v-for="post in user.posts" :key="post.title" class="posts">
+            {{post.title}}
+        </div>
+
     </div>
 </div>
 

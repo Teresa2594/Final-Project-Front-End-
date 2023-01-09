@@ -56,7 +56,7 @@ export default{
                 email:data.user.email,
                 age:data.user.age,
                 imagen:data.user.imagen,
-                posts:data.posts[0].title
+                posts:data.posts
             };
 
             this.users.push(user);

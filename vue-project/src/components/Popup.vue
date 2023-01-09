@@ -5,7 +5,7 @@
                 <i class="fa-sharp fa-solid fa-circle-xmark fa-2x"  @click="trigger()"></i>
         
         </div>
-            <slot />   
+           <slot class="text-inside"></slot>  
         </div>
     </div>
 
@@ -58,6 +58,7 @@ props:['trigger']
     color: rgba(219, 88, 88, 0.845);
  
 }
+
 
 
 
