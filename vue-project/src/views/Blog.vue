@@ -57,11 +57,13 @@ export default {
             this.buttonTrigger = true;
         },
     },
-    
+
     async created() {
             const response = await fetch(`http://localhost:8083/api/posts`);
-            this.posts = await response.json();        
+            this.posts = await response.json();   
+            
     },
+ 
 };
 
 </script>

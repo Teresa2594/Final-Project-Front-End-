@@ -4,7 +4,7 @@
 
 <form @submit="sendForm" class="formulario">
     <label class="labels">Id del post</label>
-    <input class="inputs" id="post" type="number" v-model="post.id">
+    <input class="inputs" id="id" type="number" v-model="post.id" :max="getLength()+1" :min="getLength()+1">
 
     <label class="labels">Título</label>
     <input class="inputs" id="title" type="text" v-model="post.title" required>
@@ -13,11 +13,21 @@
     <input class="inputs" type="date" v-model="post.date" required>
 
     <label class="labels">Sección</label>
-    <input class="inputs" type="text" v-model="post.section" required>
+    <select class="inputs" type="text" v-model="post.section" required>
+    <option>Nieve</option>
+    <option>Ciclismo</option>
+    <option>Entrenamiento</option>
+    <option>Cultura</option>
+    <option>Montaña</option>
+    </select>
 
     <label class="labels">ID del usuario</label>
-    <input class="inputs" type="text" v-model="post.userId" required>
+    
+    <select class="inputs" type="number" v-model="post.userId" required> 
+    <option v-for="user in users" :key="user.name">{{user.id}}</option>
+    </select>
 
+    
     <label class="labels">Descripción</label>
     <textarea class="inputs" type="text" v-model="post.description" rows="10" cols="5" ></textarea>
 
@@ -35,7 +45,6 @@
 
 export default{
     data(){
-        
         return {
             post:{
                 id:"",
@@ -45,12 +54,14 @@ export default{
                 userId:"",
                 description:"",
                 urlImagen:"",
-            }
+            },
+
+            posts:[],
+            users:[],
         }
     },
     methods:{
         sendForm(e){
-            
             const id = this.post.id;
            const title=this.post.title;
            const date=this.post.date;
@@ -64,10 +75,24 @@ export default{
                 headers: { "Content-Type": "application/json" },
                 body:JSON.stringify({id,title,date,section,userId,description,urlImagen})
             })
-        }
         },
 
-       
+        getLength(){
+          return this.posts.length;
+        }
+
+        },
+
+        async created() {
+            const response = await fetch(`http://localhost:8083/api/posts`);
+            this.posts = await response.json();  
+            
+            
+            const responseUsers=await fetch(`http://localhost:8082/api/users`);
+            this.users=await responseUsers.json();
+    },
+        
+    
     }
 </script>
 
@@ -77,7 +102,6 @@ export default{
     display:flex;
     flex-direction: column;
     justify-content: left;
-   
 }
 
 .titleForm{
