@@ -24,7 +24,8 @@
     <label class="labels">ID del usuario</label>
     
     <select class="inputs" type="number" v-model="post.userId" required> 
-    <option v-for="user in users" :key="user.name">{{user.id}}</option>
+   
+        <option v-for="user in users" :key="user.name">{{user.id}}</option>
     </select>
 
     
@@ -32,7 +33,7 @@
     <textarea class="inputs" type="text" v-model="post.description" rows="10" cols="5" ></textarea>
 
     <label class="labels">Url de la imágen</label>
-    <input class="inputs" type="text" v-model="post.urlImagen" >
+    <input class="inputs" id="urlImagen" type="url" v-model="post.urlImagen">
     
     <input type="submit" value="Enviar" class="enviar" >
 
@@ -61,6 +62,7 @@ export default{
         }
     },
     methods:{
+
         sendForm(e){
             const id = this.post.id;
            const title=this.post.title;
@@ -68,7 +70,8 @@ export default{
            const section=this.post.section;
            const userId=this.post.userId;
            const description=this.post.description;
-           const urlImagen=this.post.urlImagen;
+            const urlImagen=this.post.urlImagen;
+           
           
           fetch (`http://localhost:8083/api/posts`,{
                 method: "POST",
@@ -86,10 +89,9 @@ export default{
         async created() {
             const response = await fetch(`http://localhost:8083/api/posts`);
             this.posts = await response.json();  
-            
-            
-            const responseUsers=await fetch(`http://localhost:8082/api/users`);
-            this.users=await responseUsers.json();
+
+            const responseUsers = await fetch(`http://localhost:8082/api/users`);
+            this.users= await responseUsers.json(); 
     },
         
     

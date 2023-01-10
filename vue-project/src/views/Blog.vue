@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
 import NavBarVue from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import BlogCard from "../components/BlogCard.vue";

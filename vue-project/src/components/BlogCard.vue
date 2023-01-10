@@ -98,6 +98,9 @@ export default {
                 fetch(`http://localhost:8083/api/posts/${id}`, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
+                })
+                .then(()=>{
+                    window.location.reload();
                 });
             }
         },

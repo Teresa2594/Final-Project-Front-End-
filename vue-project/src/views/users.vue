@@ -47,15 +47,12 @@ export default{
 
 
     async created() {
-        for (let i = 2; i<4; i++) {
+        for (let i = 1; i<3; i++) {
             const response = await fetch(`http://localhost:8081/api/blog/user/${i}`);
             const data = await response.json();
             const user = {
                 name:data.user.name,
-                username:data.user.username,
                 email:data.user.email,
-                age:data.user.age,
-                imagen:data.user.imagen,
                 posts:data.posts
             };
 

@@ -8,9 +8,7 @@
     </div>
     <div class="info__description">
         <h1>{{user.name}}</h1>
-        <p>{{user.username}}</p>
         <p>{{user.email}}</p>
-        <p>{{user.age}}</p>
         <div v-for="post in user.posts" :key="post.title" class="posts">
             {{post.title}}
         </div>
@@ -33,11 +31,7 @@ export default{
             type:Object, 
             default:{
                 name:"Usuario",
-                username:"Usuari@",
-                imagen:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
-                email:"usuario@hotmail.com",
-                age:25,
-                
+                email:"usuario@hotmail.com",                
             }
         }
     }
