@@ -58,8 +58,4 @@ props:['trigger']
     color: rgba(219, 88, 88, 0.845);
  
 }
-
-
-
-
 </style>

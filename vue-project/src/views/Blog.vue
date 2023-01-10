@@ -3,7 +3,7 @@
         <NavBarVue></NavBarVue>
     </header>
 
-    <body class="body">
+    <body v-if="isLoggedIn" class="body">
         
         <div class="iconplus">
             <i @click="trigger()" class="fa-solid fa-square-plus fa-2x" name="icon-plus"></i>
@@ -26,6 +26,7 @@
     <footer>
         <Footer></Footer>
     </footer>
+    
 </template>
 
 <script>
@@ -35,6 +36,8 @@ import Footer from "../components/Footer.vue";
 import BlogCard from "../components/BlogCard.vue";
 import Popup from "../components/Popup.vue";
 import SavePost from "../components/SavePost.vue";
+import authJS from '../stores/auth.js';
+import {mapState} from 'pinia';
 
 
 
@@ -51,6 +54,12 @@ export default {
             posts: [],
             buttonTrigger: false,
         };
+    },
+
+    computed:{
+      ...mapState(authJS,["isLoggedIn"])
+      
+
     },
 
     methods: {

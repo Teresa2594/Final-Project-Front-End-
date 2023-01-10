@@ -7,6 +7,8 @@ import Situacion from '../views/Situacion.vue'
 import DondeDormir from '../views/DondeDormir.vue'
 import Blog from '../views/Blog.vue'
 import Users from '../views/users.vue'
+import signup from '../views/SignUp.vue'
+import login from '../views/Login.vue'
 
 const routes = [
   {
@@ -45,6 +47,18 @@ const routes = [
     name: 'Users',
     component: Users
   },
+  
+  {
+  path: '/signup',
+  name: 'signup',
+  component: signup
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+    },
+  
 ]
 
 const router = createRouter({

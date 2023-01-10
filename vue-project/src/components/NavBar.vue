@@ -11,8 +11,22 @@
      
       <div class="menu-item"><router-link to="/ComerYBeber">Comer y Beber</router-link></div>
       <div class="menu-item"><router-link to="/DondeDormir">Donde dormir</router-link></div>
-      <div class="menu-item"><router-link to="/Blog">Blog</router-link></div>
-   
+     
+      <div v-if="isLoggedIn" class="menu-item"><router-link  to="/Blog">Blog</router-link></div>
+      
+      <button v-if="isLoggedIn" @click="handleLogOut()" >Logout</button>
+
+      <span v-if="!isLoggedIn">
+      <RouterLink to="/signup">
+        <button>Sign Up</button>
+      </RouterLink>
+
+      <RouterLink to="/login">
+        <button>Login</button>
+      </RouterLink>
+    </span>
+      
+    
     </nav>
 
   </template>
@@ -20,6 +34,11 @@
   <script>
  
 import Dropdown from './Dropdown.vue';
+import authJS from '../stores/auth.js';
+import {mapActions, mapState} from 'pinia';
+import auth from '../stores/auth.js';
+
+
   export default {
     name: 'navbar',
     components: {
@@ -46,7 +65,24 @@ import Dropdown from './Dropdown.vue';
           },
         ],
       }
+    },
+
+    computed:{
+      ...mapState(authJS,["user","isLoggedIn"])
+      
+
+    },
+    methods:{
+      ...mapActions(authJS,['logOutUser','authenticateUser']),
+
+      async  handleLogOut() {
+  this.logOutUser().then(() => {
+   this.authenticateUser();
+    router.push("/");
+  });
+}
     }
+    
   }
   </script>
   
